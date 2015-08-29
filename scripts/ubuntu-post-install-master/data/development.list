@@ -1,0 +1,12 @@
+createrepo
+git
+gnome-common
+gtk-3-examples
+gtk-doc-tools
+libgtk-3-dev
+nodejs
+npm
+python-launchpadlib
+python3-distutils-extra
+rpm
+valac

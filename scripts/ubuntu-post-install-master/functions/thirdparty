@@ -1,0 +1,229 @@
+#!/bin/bash
+
+# THIRD PARTY APPLICATIONS
+function thirdparty {
+echo ''
+show_info 'What would you like to install? '
+echo ''
+echo '1. Google Chrome?'
+echo '2. Google Talk Plugin?'
+echo '3. Steam?'
+echo '4. Sublime Text?'
+echo '5. Minecraft Installer?'
+echo '6. Inkscape Stable?'
+echo '7. Download Manager'
+echo '8. Indicator Synapse'
+echo '9. Birdie Twitter Client'
+echo '10. Google Drive (ocamlfuse)'
+echo 'r. Return'
+echo ''
+show_info 'Enter your choice:' && read REPLY
+case $REPLY in
+# Google Chrome
+1)
+    echo 'Downloading Google Chrome...'
+    # Download Debian file that matches system architecture
+    case `uname -i` in
+        i386|i486|i586|i686)
+            wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb # Uncomment this if you want to use the stable version
+            # wget https://dl.google.com/linux/direct/google-chrome-beta_current_i386.deb # Uncomment this if you want to use the beta version
+            # wget https://dl.google.com/linux/direct/google-chrome-unstable_current_i386.deb # Uncomment this if you want to use the unstable version
+            ;;
+        x86_64)
+            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb # Uncomment this if you want to use the stable version
+            # wget https://dl.google.com/linux/direct/google-chrome-beta_current_amd64.deb # Uncomment this if you want to use the beta version
+            # wget https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb # Uncomment this if you want to use the unstable version
+            ;;
+        *)
+            show_error "Couldn't find a download that matches your system." && thirdparty
+            ;;
+    esac
+    # Install package(s)
+    echo 'Installing Google Chrome...'
+    echo 'Requires root privileges:'
+    sudo dpkg -i google-chrome*.deb
+    sudo apt-get install -fy
+    # Cleanup and finish
+    rm google-chrome*.deb
+    show_success 'Done.'
+    thirdparty
+    ;;
+# Google Talk Plugin
+2)
+    echo 'Downloading Google Talk Plugin...'
+    # Download Debian file that matches system architecture
+    case `uname -i` in
+        i386|i486|i586|i686)
+            wget https://dl.google.com/linux/direct/google-talkplugin_current_i386.deb
+            ;;
+        x86_64)
+            wget https://dl.google.com/linux/direct/google-talkplugin_current_amd64.deb
+            ;;
+        *)
+            show_error "Couldn't find a download that matches your system." && thirdparty
+            ;;
+    esac
+    # Install package(s)
+    echo 'Installing Google Talk Plugin...'
+    echo 'Requires root privileges:'
+    sudo dpkg -i google-talkplugin_current*.deb
+    sudo apt-get install -fy
+    # Cleanup and finish
+    rm google-talkplugin_current*.deb
+    show_success 'Done.'
+    thirdparty
+    ;;
+# Steam
+3)
+    echo 'Downloading Steam...'
+    # Download Debian file that matches system architecture
+    case `uname -i` in
+        i386|i486|i586|i686)
+            wget http://repo.steampowered.com/steam/archive/precise/steam_latest.deb
+            ;;
+        x86_64)
+            wget http://repo.steampowered.com/steam/archive/precise/steam_latest.deb
+            ;;
+        *)
+            show_error "Couldn't find a download that matches your system." && thirdparty
+            ;;
+    esac
+    # Install package(s)
+    echo 'Installing Steam...'
+    echo 'Requires root privileges:'
+    sudo dpkg -i steam*.deb
+    sudo apt-get install -fy
+    echo 'Installing Steam dependencies...'
+    echo 'Requires root privileges:'
+    sudo apt-get install -y libgl1-mesa-glx libgl1-mesa-dev libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libc6:i386
+    # Cleanup and finish
+    rm steam*.deb
+    show_success 'Done.'
+    thirdparty
+    ;;
+# Sublime Text 3 (build 3083)
+4)
+    echo 'Downloading Sublime Text 3 (build 3083)...'
+    # Download Debian file that matches system architecture
+    case `uname -i` in
+        i386|i486|i586|i686)
+            wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3083_i386.deb
+            ;;
+        x86_64)
+            wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3083_amd64.deb
+            ;;
+        *)
+            show_error "Couldn't find a download that matches your system." && thirdparty
+            ;;
+    esac
+    # Install package(s)
+    echo 'Installing Sublime Text 3 (build 3083)...'
+    echo 'Requires root privileges:'
+    sudo dpkg -i sublime-text_build-3083*.deb
+    sudo apt-get install -fy
+    # Create symbolic link
+    echo 'Creating symbolic link...'
+    echo 'Requires root privileges:'
+    sudo ln -sf /opt/sublime_text/sublime_text /usr/bin/sublime
+    # Cleanup and finish
+    rm sublime-text_build-3083*.deb
+    show_success 'Done.'
+    thirdparty
+    ;;
+# Minecraft Installer
+5)
+    # Add repository
+    echo 'Adding Minecraft Installer PPA to software sources...'
+    show_info 'Requires root privileges:'
+    sudo add-apt-repository ppa:minecraft-installer-peeps/minecraft-installer
+    # Update repository information
+    echo 'Updating repository information...'
+    sudo apt-get update
+    # Install
+    echo 'Installing Minecraft Installer...'
+    sudo apt-get install -y minecraft-installer
+    show_success 'Done.'
+    thirdparty
+    ;;
+# Inkscape Stable
+6)
+    # Add repository
+    echo 'Adding Inkscape Stable PPA to software sources...'
+    show_info 'Requires root privileges:'
+    sudo add-apt-repository ppa:inkscape.dev/stable
+    # Update repository information
+    echo 'Updating repository information...'
+    sudo apt-get update
+    # Install
+    echo 'Installing Inkscape Stable...'
+    sudo apt-get install --only-upgrade -y inkscape
+    show_success 'Done.'
+    thirdparty
+    ;;
+#Download Manager
+7)
+    # Download Debian file
+    echo 'Getting the .deb...'
+    show_info 'Requires ro ot privileges:'
+    wget http://xdman.sourceforge.net/xdman_mint_ubuntu.deb
+    # Install package(s)
+    echo 'Installing Sublime Text 3 (build 3083)...'
+    echo 'Requires root privileges:'
+    sudo dpkg -i xdman_mint_ubuntu.deb
+    sudo apt-get install -fy
+    show_success 'Done.'
+    thirdparty
+    ;;
+# Indicator Synapse
+8)
+    # Add repository
+    echo 'Adding Download Manager PPA to software sources...'
+    show_info 'Requires root privileges:'
+    sudo apt-add-repository ppa:elementary-os/unstable-upstream
+    # Update repository information
+    echo 'Updating repository information...'
+    sudo apt-get update
+    # Install
+    echo 'Installing Indicator Synapse...'
+    sudo apt-get install indicator-synapse
+    show_success 'Done.'
+    thirdparty
+    ;;
+# Birdie Twitter Client
+9)
+    # Add repository
+    echo 'Adding Birdie Twitter Client PPA to software sources...'
+    show_info 'Requires root privileges:'
+    sudo add-apt-repository ppa:birdie-team/stable
+    # Update repository information
+    echo 'Updating repository information...'
+    sudo apt-get update
+    # Install
+    echo 'Installing Birdie Twitter Client...'
+    sudo apt-get install birdie
+    show_success 'Done.'
+    thirdparty
+    ;;
+# Google Drive (ocamlfuse)
+9)
+    # Add repository
+    echo 'Adding Google Drive (ocamlfuse) PPA to software sources...'
+    show_info 'Requires root privileges:'
+    sudo add-apt-repository ppa:alessandro-strada/ppa
+    # Update repository information
+    echo 'Updating repository information...'
+    sudo apt-get update
+    # Install
+    echo 'Installing Google Drive (ocamlfuse)...'
+    sudo apt-get install google-drive-ocamlfuse
+    show_success 'Done.'
+    thirdparty
+    ;;
+# Return
+[Rr]*)
+    clear && main;;
+# Invalid choice
+* )
+    clear && show_error '\aNot an option, try again.' && thirdparty;;
+esac
+}

@@ -1,0 +1,44 @@
+#!/bin/bash
+
+#----- DECLARATIONS -----#
+
+dir="$(dirname "$0")"
+
+NPMTOOLS="$dir/data/npm.list"
+
+# INSTALL DEVELOPMENT TOOLS
+function npm {
+echo ''
+echo 'Installing NPM tools...'
+echo ''
+echo 'Current package list:'
+echo ''
+for package in $(cat $NPMTOOLS)
+do
+echo -e '\t'$package
+done
+echo ''
+show_info 'Proceed? (Y)es, (N)o : ' && read REPLY
+echo ''
+case $REPLY in
+# Positive action
+[Yy]* )
+    show_info 'Requires root privileges:'
+    # Feel free to change the contents of "npm.list" in the data folder to whatever suits your preference.
+    for tool in $(cat $NPMTOOLS)
+    do
+    npm install -g tool
+    done
+    show_success 'Done.'
+    main
+    ;;
+# Negative action
+[Nn]* )
+    clear && main
+    ;;
+# Error
+* )
+    clear && show_error '\aSorry, try again.' && npm
+    ;;
+esac
+}
