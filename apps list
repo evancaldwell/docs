@@ -1,4 +1,4 @@
-web apps & chrome apps:
+web apps & chrome apps: ===========================
 amazon music library
 codio
 slack
@@ -10,7 +10,7 @@ postman??
 sunrise calendar
 swoop
 
-native apps:
+native apps: ===================================
 -audacity *
 -chrome *
 firefox
@@ -26,15 +26,22 @@ teamviewer
 unetbootin
 -vlc *
 lighttable
+overgrive - https://www.thefanclub.co.za/overgrive *
 
-command line:
+command line: ==================================
 -git *
 -node
 -npm
 
-npm tools
+npm tools: =====================================
 gulp
 grunt-cli
 bower
 yeoman
 firebase
+
+
+setup: ========================================
+git - http://stackoverflow.com/questions/11403407/git-asks-for-username-everytime-i-push; git config --global credential.helper 'cache --timeout=3600' # Set the cache to timeout after 1 hour - https://help.github.com/articles/caching-your-github-password-in-git/; git branch --set-upstream-to origin/master || git push -u origin master - http://stackoverflow.com/questions/5770016/why-does-git-not-default-to-origin-master
+node - install from the binaries not repositories, (https://nodesource.com/blog/nodejs-v012-iojs-and-the-nodesource-linux-repositories)
+yo - add 'export PATH=$HOME/.node/bin:$PATH' & 'export NODE_PATH=:/home/evan/npm/lib/node_modules:/home/evan/.node/lib/node_modules' to .bashrc, add 'prefix = ~/.node' to npmrc (http://stackoverflow.com/questions/18212175/npm-yeoman-install-generator-angular-without-sudo/18277225#18277225 comments)
