@@ -15,6 +15,7 @@ echo '7. Download Manager'
 echo '8. Indicator Synapse'
 echo '9. Birdie Twitter Client'
 echo '10. Google Drive (ocamlfuse)'
+echo '11. Firefox Developer Edition'
 echo 'r. Return'
 echo ''
 show_info 'Enter your choice:' && read REPLY
@@ -205,7 +206,7 @@ case $REPLY in
     thirdparty
     ;;
 # Google Drive (ocamlfuse)
-9)
+10)
     # Add repository
     echo 'Adding Google Drive (ocamlfuse) PPA to software sources...'
     show_info 'Requires root privileges:'
@@ -216,6 +217,21 @@ case $REPLY in
     # Install
     echo 'Installing Google Drive (ocamlfuse)...'
     sudo apt-get install google-drive-ocamlfuse
+    show_success 'Done.'
+    thirdparty
+    ;;
+# Firefox Developer Edition
+10)
+    # Add repository
+    echo 'Adding Firefox Developer Edition PPA to software sources...'
+    show_info 'Requires root privileges:'
+    sudo add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora
+    # Update repository information
+    echo 'Updating repository information...'
+    sudo apt-get update
+    # Install
+    echo 'Installing Firefox Developer Edition...'
+    sudo apt-get install firefox
     show_success 'Done.'
     thirdparty
     ;;

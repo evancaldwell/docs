@@ -1,5 +1,6 @@
 #!/bin/bash
 # -*- Mode: sh; coding: utf-8; indent-tabs-mode: nil; tab-width: 4 -*-
+# http://snwh.org/ubuntu-post-install-script/
 #
 # Authors:
 #   Sam Hewitt <hewittsamuel@gmail.com>
