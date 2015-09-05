@@ -16,6 +16,7 @@ echo '8. Indicator Synapse'
 echo '9. Birdie Twitter Client'
 echo '10. Google Drive (ocamlfuse)'
 echo '11. Firefox Developer Edition'
+echo '12. Wine 1.7'
 echo 'r. Return'
 echo ''
 show_info 'Enter your choice:' && read REPLY
@@ -221,7 +222,7 @@ case $REPLY in
     thirdparty
     ;;
 # Firefox Developer Edition
-10)
+11)
     # Add repository
     echo 'Adding Firefox Developer Edition PPA to software sources...'
     show_info 'Requires root privileges:'
@@ -232,6 +233,21 @@ case $REPLY in
     # Install
     echo 'Installing Firefox Developer Edition...'
     sudo apt-get install firefox
+    show_success 'Done.'
+    thirdparty
+    ;;
+# Wine 1.7
+12)
+    # Add repository
+    echo 'Adding wine1.7 PPA to software sources...'
+    show_info 'Requires root privileges:'
+    sudo add-apt-repository ppa:ubuntu-wine/ppa
+    # Update repository information
+    echo 'Updating repository information...'
+    sudo apt-get update
+    # Install
+    echo 'Installing wine 1.7...'
+    sudo apt-get install wine1.7
     show_success 'Done.'
     thirdparty
     ;;
