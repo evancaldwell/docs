@@ -1,0 +1,109 @@
+[global_config]
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  title_transmit_bg_color = "#272847"
+  suppress_multiple_term_dialog = True
+  borderless = True
+[keybindings]
+  hide_window = F10
+[profiles]
+  [[default]]
+    background_image = None
+    background_darkness = 0.8
+    scrollback_lines = 5000
+    background_type = transparent
+    foreground_color = "#ffffff"
+    background_color = "#002b36"
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = 8e21a58a-e15f-4610-ae4a-9736bfb1b19b
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 2:0
+      size = 1921, 450
+      title = webdev
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 1212
+      ratio = 0.691745036573
+      type = HPaned
+    [[[terminal2]]]
+      directory = /home/evan/projects/
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = 8e21a58a-e15f-4610-ae4a-9736bfb1b19b
+    [[[terminal3]]]
+      directory = /home/evan/projects/
+      order = 1
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = 6d728574-c79f-4980-9ebb-46d7d5ec345b
+  [[webdev]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = f04d07da-2cb9-4252-86f5-29407889304c
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 635:338
+      size = 650, 403
+      title = Home
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 431
+      ratio = 0.667692307692
+      type = HPaned
+    [[[terminal2]]]
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = f04d07da-2cb9-4252-86f5-29407889304c
+    [[[terminal3]]]
+      order = 1
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = bfd350d3-9731-4a20-a49b-934845980b1b
+  [[default_old]]
+    [[[child1]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+  [[test]]
+    [[[child0]]]
+      position = 2:0
+      type = Window
+      order = 0
+      parent = ""
+      size = 1914, 450
+    [[[child1]]]
+      position = 1212
+      type = HPaned
+      order = 0
+      parent = child0
+    [[[terminal3]]]
+      profile = default
+      type = Terminal
+      order = 1
+      parent = child1
+    [[[terminal2]]]
+      profile = default
+      type = Terminal
+      order = 0
+      parent = child1
+[plugins]
