@@ -27,7 +27,7 @@ case $REPLY in
     # Feel free to change the contents of "npm.list" in the data folder to whatever suits your preference.
     for tool in $(cat $NPMTOOLS)
     do
-    npm install -g tool
+    npm install -g $tool
     done
     show_success 'Done.'
     main
